@@ -33,7 +33,7 @@ jobs:
 
     - name: Hello world action step
       id: hello
-      uses: d22/cleanup-ghcr-containers-action@v0.1
+      uses: d22/cleanup-ghcr-containers-action@v0.2
       with:
         who-to-greet: 'Rikson Kimo the pale'
 
