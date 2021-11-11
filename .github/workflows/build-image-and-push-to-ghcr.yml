@@ -1,0 +1,32 @@
+name: Build Docker image and push to GHCR
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://ghcr.io/
+        username: d22
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ghcr.io/d22/hello-world:${{ github.sha }}
+        file: ./Dockerfile
