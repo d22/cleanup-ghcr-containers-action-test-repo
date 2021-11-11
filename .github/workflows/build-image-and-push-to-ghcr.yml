@@ -31,12 +31,12 @@ jobs:
         tags: ghcr.io/d22/hello-world:${{ github.sha }}
         file: ./Dockerfile
 
-      - name: Hello world action step
-        id: hello
-        uses: d22/cleanup-ghcr-containers-action@v0.1
-        with:
-          who-to-greet: 'Rikson Kimo the pale'
+    - name: Hello world action step
+      id: hello
+      uses: d22/cleanup-ghcr-containers-action@v0.1
+      with:
+        who-to-greet: 'Rikson Kimo the pale'
 
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"    
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"    
