@@ -32,8 +32,9 @@ jobs:
         file: ./Dockerfile
 
     - name: Clean up container versions
-      uses: d22/cleanup-ghcr-containers-action@v0.3.1
+      uses: d22/cleanup-ghcr-containers-action@v0.3.2
       with:
         access-token: ${{ secrets.GITHUB_TOKEN }}
         package-name: 'hello-world'
+        username: 'd22'
 
